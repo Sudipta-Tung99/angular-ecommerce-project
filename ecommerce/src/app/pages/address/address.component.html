@@ -1,0 +1,73 @@
+<div >
+<form class="row g-3 mx-2" #address="ngForm" (ngSubmit)="data(address.value)" >
+
+    <div class="col-md-6">
+      <label for="inputEmail4" class="form-label">Name</label>
+      <input type="email" class="form-control" id="inputEmail4" placeholder="Name" name="name" ngModel>
+      <span class=" text-danger">{{ errorData.name }}</span>
+    </div>
+    <div class="col-md-6">
+      <label for="inputPassword4" class="form-label">Phone Number</label>
+      <input type="number" class="form-control" id="inputPassword4" placeholder="Phone Number" name="number" ngModel>
+      <span class=" text-danger">{{ errorData.number }}</span>
+    </div>
+    <div class="col-12">
+      <label for="inputAddress" class="form-label">Address</label>
+      <textarea name="" id="" cols="5" rows="3" class="form-control" name="address" ngModel></textarea>
+      <span class=" text-danger">{{ errorData.address }}</span>
+    </div>
+    <div class="col-12">
+      <label for="inputAddress2" class="form-label">city/town</label>
+      <input type="text" class="form-control" id="inputAddress2" placeholder="city/town" name="city" ngModel>
+      <span class=" text-danger">{{ errorData.city }}</span>
+    </div>
+    <div class="col-12">
+      <label for="inputAddress2" class="form-label">Landmark</label>
+      <input type="text" class="form-control" id="inputAddress2" placeholder="landmark" name="landmark" ngModel>
+      <span class=" text-danger">{{ errorData.landmark }}</span>
+    </div>
+    <div class="col-12">
+      <label for="inputAddress2" class="form-label">Locality</label>
+      <input type="text" class="form-control" id="inputAddress2" placeholder="locality" name="locality" ngModel>
+      <span class=" text-danger">{{ errorData.locality }}</span>
+    </div>
+    <div class="col-md-6">
+      <label for="inputCity" class="form-label">Alternate Phone</label>
+      <input type="number" class="form-control" id="inputCity" placeholder="alternate phone Number"
+        name="alternativeNumber" ngModel>
+        <span class=" text-danger">{{ errorData.alternativeNumber }}</span>
+    </div>
+    <div class="col-md-4">
+      <label for="inputState" class="form-label">State</label>
+      <input type="text" class="form-control" id="inputzip" placeholder="state" name="state" ngModel>
+      <span class=" text-danger">{{ errorData.state }}</span>
+    </div>
+    <div class="col-md-2">
+      <label for="inputZip" class="form-label">Pin Code</label>
+      <input type="number" class="form-control" id="inputZip" name="pincode" ngModel>
+      <span class=" text-danger">{{ errorData.pincode }}</span>
+    </div>
+    <div class="col-12">
+      <div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="addressType" id="exampleRadios1" value="Home" ngModel>
+        <label class="form-check-label" for="exampleRadios1">
+          Home
+        </label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="addressType" id="exampleRadios2" value="Work" ngModel>
+        <label class="form-check-label" for="exampleRadios2">
+          Work
+        </label>
+      </div>
+    </div>
+      <span class=" text-danger">{{ errorData.addressType }}</span>
+    </div>
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary">Sign in</button>
+    </div>
+
+  </form>
+  </div>
+

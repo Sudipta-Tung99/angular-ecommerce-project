@@ -1,0 +1,29 @@
+<div class="d-flex ">
+  <div class="frist">
+    <div class="card card-2" *ngFor="let item of allcategory" >
+      <ul class="list-group list-group-flush">
+        <div class="input-group-text mt-1">
+          <input class="form-check-input mt-0 mx-2" value="{{ item.category_name  }}" type="checkbox" aria-label="Checkbox for following text input" (click)="findCategory($event)">
+          <label aria-label="Text input with checkbox btn">{{ item.category_name }}</label>
+          <!-- <li class="list-group-item mx-3 btn " ></li> -->
+        </div>
+
+      </ul>
+    </div>
+  </div>
+  <div class="second">
+
+  <div *ngFor="let item of product" class=" d-inline-block mx-lg-2 mx-1 text-start  mt-2 ">
+    <div class="card card-1">
+      <img src="http://localhost:5000/{{ item.item_img  }}" class="card-img-top img" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{ item.item_name.slice(0,12) }}...</h5>
+        <p class="card-text text-success h5">{{ item.price | currency:"INR" }}</p>
+        <p class="card-text h6">{{ category }}</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+
+</div>
+</div>
+</div>

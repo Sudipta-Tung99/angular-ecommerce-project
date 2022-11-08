@@ -1,0 +1,30 @@
+<div class="mx-lg-5 mx-2 ">
+<form #user="ngForm" (ngSubmit)="onsubmit(user.value)">
+
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <input type="email" class="form-control " id="exampleInputEmail1" aria-describedby="emailHelp" name="email"
+      ngModel>
+      <span class=" text-danger">{{ errorData.email }}</span>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input type="password" class="form-control " id="exampleInputPassword1" name="password" ngModel>
+    <span class=" text-danger">{{ errorData.password }}</span>
+  </div>
+  <button type="submit" class="btn btn-primary" >Log in</button>
+  <br>
+    <p> Already Login?<span routerLink="/sinein" class=" text-primary btn">Login</span></p>
+</form>
+<br>
+<!-- <div class="w-100 ">
+  <a href="#" class="btn btn-outline-success google-plus w-100"> Login  with Google <i class="fa fa-google-plus"></i> </a>
+</div> -->
+<br>
+<div class=" alert alert-secondary" *ngIf="message">
+  {{ message }}
+</div>
+<div class=" alert alert-danger" *ngIf="errorev">
+{{ errorev }}
+</div>
+</div>

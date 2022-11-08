@@ -1,0 +1,55 @@
+<div class="" style="width:100% ;">
+  <div style="margin: 0 auto;width: 80%;">
+    <div>
+      <div class=" shadow-lg mb-3 d-flex justify-content-between " *ngIf="open==false">
+        <div class=" mt-2 p-3 mx-2" style="line-height: 8px ;">
+          <p>Delivered to: <span class="h5"> {{ address.name.slice(0,8) }}..,{{ address.pincode }}</span></p>
+          <p>{{ address.locality }},{{ address.landmark }},{{ address.city.slice(0,3) }}..</p>
+        </div>
+        <div>
+          <button class="btn btn-outline-primary mt-4 mx-2" (click)="change()">change </button>
+        </div>
+      </div>
+
+      <div>
+        <div class=" shadow-lg mb-3  " *ngIf="open==true">
+          <div class=" mt-2 p-3 mx-2" style="line-height: 8px ;">
+            <div *ngFor="let item of data">
+              <input class="form-check-input mt-2 mx-2" type="radio" name="paymentType" id="flexRadioDefault1"
+                style="cursor: pointer ;" (click)="addressChange(item._id)">
+              <label>
+                <p> Delivered to: <span class="h5"> {{ item.name.slice(0,8) }}..,{{ item.pincode }}</span></p>
+                <p>{{ item.locality }},{{ item.landmark }},{{ item.city.slice(0,3) }}..</p>
+              </label>
+            </div>
+          </div>
+          <div>
+            <p class="add mx-3 h4 pb-3" routerLink="/address" style="cursor: pointer;"> + Add New Address</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="head-2">
+      <h2 class="text-center">Payment Option</h2>
+      <hr>
+      <form #cash="ngForm" (ngSubmit)="payment(cash.value)">
+        <div class="form-check">
+          <input class="form-check-input mt-2" type="radio" name="paymentType" id="flexRadioDefault1"
+            style="cursor: pointer ;" value="online" ngModel (change)="online()">
+          <label class="form-check-label h4" for="flexRadioDefault1" style="cursor: pointer ;">
+            Online Payment
+          </label>
+        </div>
+        <div class="form-check" style="cursor: pointer ;">
+          <input class="form-check-input mt-2" type="radio" name="paymentType" id="flexRadioDefault2"
+            style="cursor: pointer ;" value="offline" ngModel     (change)="click()">
+          <label class="form-check-label h4" for="flexRadioDefault2" style="cursor: pointer ;" >
+            Cash On Delivery
+          </label>
+        </div>
+        <button class="btn btn-primary mt-3" *ngIf="toggle==true">Order Now</button>
+      </form>
+    </div>
+
+  </div>
+</div>

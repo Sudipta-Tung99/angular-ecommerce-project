@@ -1,0 +1,64 @@
+<div id="layoutAuthentication">
+  <div id="layoutAuthentication_content">
+    <main>
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-7">
+            <div class="card shadow-lg border-0 rounded-lg mt-5">
+              <div class="card-header">
+                <h3 class="text-center font-weight-light my-4">Add New Category</h3>
+              </div>
+              <div class="card-body">
+
+                <form #product="ngForm" (ngSubmit)="onSubmit(product.value)">
+                  <div class="form-floating mb-3">
+                    <input class="form-control" id="inputName" type="name"  name="name" ngModel  />
+                    <label for="inputName">Item Name</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input class="form-control" id="inputName" type="text"  name="description" ngModel  />
+                    <label for="inputName">Description</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input class="form-control" id="inputName" type="number"  name="price" ngModel  />
+                    <label for="inputName">price</label>
+                  </div>
+                  <div class="form-floating mb-3" >
+                    <select name="category" id="category" class="form-control p-3" ngModel >
+                      <option value="" selected hidden > -- Choice Your category -- </option>
+                      <option [value]="cata._id" *ngFor="let cata of category">{{ cata.category_name }}</option>
+                    </select>
+
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input class="form-control" id="inputName" type="number"  name="stock" ngModel  />
+                    <label for="inputName">Stock</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input class="form-control p-3" type="file" (change)="fileHandle($event)" >
+                  </div>
+                  <div class="mt-4 mb-0">
+                    <div class="d-flex w-100">
+                      <button class="btn btn-primary btn-block w-50 mx-1" type="submit">add New Items</button>
+                      <button class="btn btn-primary btn-block w-50 mx-1" routerLink="/item">Go to Items</button>
+                    </div>
+                  </div>
+
+                </form>
+                <br>
+                <div class=" alert alert-success" *ngIf="message">
+                  {{ message }}
+                </div>
+                <div class=" alert alert-danger" *ngIf="error">
+                  {{ error }}
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+

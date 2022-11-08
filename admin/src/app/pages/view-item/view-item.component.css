@@ -1,0 +1,25 @@
+.detail-img{
+  width: 40%;
+  height: 70vh;
+}
+.card{
+  border: none;
+  width: 35%;
+}
+@media only screen and (max-width: 1024px){
+  .detail-img{
+    width: 100%;
+  }
+
+}
+@media only screen and (max-width: 768px){
+  .detail-img{
+    width: 100%;
+  }
+  .card{
+    margin-top: 20px;
+    width: 100%;
+  }
+
+}
+

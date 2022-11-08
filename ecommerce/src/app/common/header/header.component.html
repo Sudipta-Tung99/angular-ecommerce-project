@@ -1,0 +1,77 @@
+<div>
+  <div class=" pb-3" style="background-color:#1796F4  ;">
+    <div class="d-flex justify-content-between pt-4">
+      <div class=" d-flex">
+        <p class="mx-2 mt-1 text-white pop" (click)="toggle()"><i class="fa fa-bars" style="font-size:22px"></i></p>
+        <img src="assets/img/logo.png" alt="" class=" head-icon" routerLink="/" style="cursor: pointer ;">
+
+      </div>
+      <div class="search-head mt-lg-2">
+        <input type="text" class="search " (keyup)="onSubmit($event)" [(ngModel)]="searchValue">
+        <span class=" button " (click)="search()"><i class='fas fa-search mt-1  icon' style='font-size:25px'></i></span>
+      </div>
+      <div class="d-flex text-white mt-lg-2">
+        <div class="d-flex mt-2" style="cursor:pointer ;" (click)="protect()">
+          <p><i class='fas fa-shopping-cart' style='font-size:20px'></i></p>
+          <div>
+            <p class="h6 mx-1 d-md-block d-none">Cart</p>
+
+          </div>
+          <div class="position-absolute bg-danger rounded-5 cart" *ngIf="count">
+            <span class="px-2">{{ count }}</span>
+          </div>
+
+
+        </div>
+        <div class="d-flex mx-4 mt-2 text-white" routerLink="/login" style="cursor:pointer ;" *ngIf="!authToken">
+          <p><i class='fas fa-user-alt' style='font-size:20px'></i></p>
+          <p class="h6 mx-1 d-md-block d-none">Login</p>
+        </div>
+        <div *ngIf="authToken">
+          <div class="mx-4 border border-white rounded-2 d-lg-block d-none" (click)="open()">
+            <p class=" h5 mx-1 mt-1  " style="cursor: pointer ;">{{ decord.name.slice(0,8) }}</p>
+          </div>
+          <p class=" h5 mx-1 mt-1 d-lg-none mx-4 " style="cursor: pointer ;"><i class='fas fa-user-check'
+              style='font-size:22px'></i></p>
+        </div>
+      </div>
+      <div class=" position-absolute res " #view style="width:100%; top: 7rem;" *ngIf="close">
+        <div class=" bg-white float-end mx-3 text-center shadow shadow-lg">
+            <p class="px-5 h6 mt-2 pb-2" style="cursor:pointer ;"  (click)="order()">My Order</p>
+            <p class=" px-5 h6 pb-2 " style="cursor:pointer ;" (click)="logout()">Log Out</p>
+          </div>
+        </div>
+      <!-- <div class=" position-absolute mt-4 res " style="width:100% ;" *ngIf="close">
+        <div class="bg-white text-center float-end mx-3 mt-5 res-1 shadow-lg rounded-1 w-auto border border-secondary ">
+          <p class=" px-5 mt-2 h5" style="cursor:pointer ;" routerLink="/order" >My Order</p>
+          <p class=" px-5 mt-2 h5 pb-2" style="cursor:pointer ;"  (click)="logout()">Log Out</p>
+        </div>
+      </div> -->
+    </div>
+    <div class="search-head-2">
+      <div class="search-head-3 mx-2">
+        <input type="text" class="search-2 ">
+        <span class=" button-2 "><i class='fas fa-search   icon-2' style='font-size:20px'></i></span>
+      </div>
+    </div>
+  </div>
+  <div class="toggel" *ngIf="bar">
+    <div class="d-flex justify-content-between mx-3 mt-3">
+      <h2>Shop</h2>
+      <p (click)="stop()"><i class="fas fa-close p-1"></i></p>
+
+    </div>
+    <hr>
+
+    <div>
+      <ul class=" list-unstyled mx-3">
+        <li class="mb-2">Profile</li>
+        <li class="mb-2">Home</li>
+        <li></li>
+      </ul>
+      <p class=" mt-auto mx-3 bottom-0 position-fixed " (click)="logout()">Log Out</p>
+    </div>
+
+  </div>
+
+</div>

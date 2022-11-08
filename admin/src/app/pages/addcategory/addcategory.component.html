@@ -1,0 +1,50 @@
+<div id="layoutAuthentication">
+  <div id="layoutAuthentication_content">
+    <main>
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-7">
+            <div class="card shadow-lg border-0 rounded-lg mt-5">
+              <div class="card-header">
+                <h3 class="text-center font-weight-light my-4">Add New Category</h3>
+              </div>
+              <div class="card-body">
+                <form #category="ngForm" (ngSubmit)="onSubmit(category.value)" >
+                  <div class="form-floating mb-3">
+                    <input class="form-control" name="name" id="inputName" type="text" ngModel required   />
+                    <label for="inputName">Category Name</label>
+
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input class="form-control p-3"  type="file" name="file" (change)="filehandle($event)">
+                  </div>
+                  <div class="mt-4 mb-0 w-100">
+                    <div class="d-flex justify-content-between"><button class="btn btn-primary btn-block w-50 mx-1" type="submit">Add New Category</button>
+                      <button class="btn btn-primary btn-block w-50 mx-1" routerLink="/category">Go To Category</button>
+                    </div>
+
+                  </div>
+
+
+
+                </form>
+                <br>
+
+                <div class="alert alert-success" *ngIf="message">
+                 {{ message }}
+                </div>
+                <div class="alert alert-danger" *ngIf="error">
+                  {{ error }}
+                 </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+
+

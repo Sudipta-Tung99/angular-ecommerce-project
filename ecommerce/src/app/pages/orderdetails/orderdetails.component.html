@@ -1,0 +1,51 @@
+<div *ngIf="orderData.length!=0;else block">
+
+  <div class="card mt-3 " style="width: 90%;" *ngFor="let item of orderData ">
+    <div class="d-lg-flex justify-content-between">
+      <div>
+        <img class="card-img-top ma-2" src="http://localhost:5000/{{ item.product.item_img }}" alt="Card image cap"
+          style="width: 100px;">
+        <div class="card-body">
+          <h5 class="card-title">{{ item.product.item_name.slice(0,10) }}...</h5>
+          <p class="card-text">Quantity: {{ item.qty }}</p>
+          <h5 class=" text-secondary">{{ item.totalPrice | currency:"INR" }}</h5>
+          <p style="font-size: 20px ;">Delivered to: <span class="h5">{{ item.address.name.slice(0,7) }}..,{{
+              item.address.locality }},{{ item.address.landmark }},{{ item.address.city }},{{ item.address.pincode
+              }}</span></p>
+
+        </div>
+      </div>
+      <div *ngIf='!item.isdelivered'>
+        <div class='mx-lg-5 mt-lg-5 text-center mb-3 ' *ngIf="item.Activeorder">
+          <button class="btn btn-primary mt-lg-5" (click)="cancel(item._id)"> Cancel</button>
+          {{ paymentStatus }}
+          <div>
+            <p class="mt-2 text-primary" *ngIf="!item.paymentStatus">Cash on Delivery</p>
+            <p class="mt-2 text-primary text-success" *ngIf="item.paymentStatus">Payment Successful</p>
+          </div>
+        </div>
+        <div *ngIf="!item.Activeorder" class='mx-lg-5 mt-lg-5 text-center mb-3 '>
+          <p class="mt-5 text-danger h6">Order Cancel</p>
+        </div>
+      </div>
+      <div  class="mx-lg-5 mt-lg-5 text-center mb-3" *ngIf='item.isdelivered'>
+        <div *ngIf='item.Activeorder'>
+        <p class="h6 text-success" *ngIf="item.isdelivered">Delivered Successful</p>
+      </div>
+        <div *ngIf="!item.Activeorder">
+          <p class="h6 text-success" *ngIf="item.paymentStatus">refund Complete</p>
+          <p class="h6 text-danger" *ngIf="!item.paymentStatus">order cancel</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #block>
+  <div style="width: 80% ; margin:0 auto">
+    <img src="assets/img/order.png" alt="">
+  </div>
+  <div class="text-center">
+    <button class="btn btn-primary" routerLink="/">Order Now</button>
+  </div>
+
+</ng-template>

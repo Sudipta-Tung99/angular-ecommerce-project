@@ -1,0 +1,47 @@
+<div id="layoutAuthentication">
+  <div id="layoutAuthentication_content">
+    <main>
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-7">
+            <div class="card shadow-lg border-0 rounded-lg mt-5">
+              <div class="card-header">
+                <h3 class="text-center font-weight-light my-4">Add New Category</h3>
+              </div>
+              <div class="card-body">
+                <form [formGroup]="editCategory" (ngSubmit)="onsubmit()">
+                  <div class="form-floating mb-3">
+                    <input class="form-control" id="inputName" formControlName="category_name" type="text" />
+                    <label for="inputName">Category Name</label>
+                  </div>
+                  <div class="form-floating mb-3 d-flex">
+                    
+                    <!-- <img src="http://localhost:5000/{{ imgUrl }}" alt="data" style="height:7rem;width:7rem;"> -->
+                    <div style="height:7rem;width:7rem;" class="mx-2" *ngIf="img">
+                      <img src="{{ img }}" alt="data" style="height:7rem;width:7rem;">
+                    </div>
+                    <div style="height:7rem;width:7rem;" class="mx-2" *ngIf="cate_img">
+                      <img src="http://localhost:5000/{{ cate_img }}" alt="data" style="height:7rem;width:7rem;">
+                    </div>
+                    <!-- <ng-template #cate_img></ng-template> -->
+                    <input class="form-control p-3" type="file" (change)="fileHandle($event)">
+
+                  </div>
+                  <div class="mt-4 mb-0">
+                    <div class="d-grid"><button class="btn btn-primary btn-block" type="submit">New Category</button>
+                    </div>
+                  </div>
+                </form>
+                <br/>
+                <div class=" alert alert-danger" *ngIf="error">
+                  {{ error }}
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>

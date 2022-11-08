@@ -1,0 +1,54 @@
+<main class=" mt-0">
+  <div class="container-fluid px-4">
+    <h1 class="mt-4">Category Tables</h1>
+
+    <div class="card mb-4 mt-5">
+      <div class="card-body d-flex">
+        <h4 class="px-3">Add New Category</h4>
+
+        <button class="btn btn-primary " routerLink="/addcategory">Add Category</button>
+      </div>
+    </div>
+    <div class="card mb-4">
+
+      <div class="card-body" style="overflow-x:auto;">
+        <form style="margin: 0 auto ;">
+          <div class="input-group">
+            <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..."
+              aria-describedby="btnNavbarSearch" />
+            <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+          </div>
+        </form>
+        <hr>
+        <table>
+          <thead>
+            <tr>
+              <th>No.</th>
+              <th>Name</th>
+              <th>Image</th>
+              <th>Operation</th>
+
+            </tr>
+
+          </thead>
+          <tbody>
+            <tr *ngFor="let cata of category">
+
+              <td>1</td>
+              <td>{{ cata.category_name }}</td>
+              <td>
+                <img src="http://localhost:5000/{{ cata.category_Image }}" [alt]="cata.cata_name" style="width:60px;height:60px;">
+
+              </td>
+              <td class="d-flex">
+                <button class="btn btn-outline-success mx-2" routerLink="/updatecategory/{{ cata._id }}"><i class="fas fa-edit"></i></button>
+                <button class="btn btn-outline-danger mx-2" (click)="delete( cata._id)"><i class="fas fa-trash"></i></button>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</main>

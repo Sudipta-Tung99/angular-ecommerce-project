@@ -1,0 +1,48 @@
+<div style="margin-top: -40rem ; width: 100%;">
+<div class=" w-25 " style="margin: 0 auto ;">
+  <div #content >
+    <div class="p-2 pdf">
+      <div class="d-flex">
+        <img src="assets/img/logo.png" alt="" style="width: 65px ;">
+        <h2>Online Shop</h2>
+      </div>
+
+
+      <div>
+        <table class="table">
+          <thead>
+
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Name:</th>
+              <td class="h5">{{ orderData.address.name }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Product:</th>
+              <td class="">{{ orderData.product.item_name }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Address:</th>
+              <td class="">{{ orderData.address.address}},
+                {{orderData.address.locality }},
+                {{ orderData.address.landmark }},
+                {{ orderData.address.city }},
+                {{ orderData.address.pincode}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Quantity:</th>
+              <td class="h5">{{ orderData.qty }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Price:</th>
+              <td class="h5">{{ orderData.totalPrice }}.00</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <button class=" float-end btn btn-info" (click)="pdf(orderData.address.name)">Pdf</button>
+</div>
+</div>

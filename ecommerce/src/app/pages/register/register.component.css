@@ -1,0 +1,8 @@
+.border{
+  margin: 0 auto;
+  border: 1px solid rgb(127, 127, 127);
+  width: 20%;
+  border-bottom: 0 8px 16px;
+  box-shadow:0 8px 16px rgb(130, 130, 130);
+
+}

@@ -1,0 +1,21 @@
+.head-2{
+  width: 90%;
+  margin: o auto;
+}
+.add:hover{
+  color: rgb(68, 68, 215);
+}
+.in{
+  width: 90px;
+}
+.ins{
+  width: 110px;
+}
+.dd:focus{
+  outline: none;
+}
+.dd{
+  outline: none;
+  border: none;
+}
+

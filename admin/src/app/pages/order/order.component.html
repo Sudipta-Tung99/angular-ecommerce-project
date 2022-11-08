@@ -1,0 +1,81 @@
+<main>
+  <div class="container-fluid px-4">
+    <h1 class="mt-4">ORDER DETAIL</h1>
+    <div class="card mb-4">
+
+      <div class="card-body" style="overflow-x:auto;">
+        <form style="margin: 0 auto ;">
+          <div class="input-group">
+            <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..."
+              aria-describedby="btnNavbarSearch" />
+            <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+          </div>
+        </form>
+        <hr>
+        <table>
+          <thead>
+            <tr>
+              <th>No.</th>
+              <th>Image</th>
+              <th>Name</th>
+              <th>Price</th>
+
+              <th>Quantity</th>
+              <th>Address</th>
+              <th>Payment</th>
+              <th>payment id</th>
+              <th>Receipt</th>
+              <th>Delivery</th>
+
+
+            </tr>
+
+          </thead>
+          <tbody>
+
+            <tr *ngFor="let item of orderData">
+              <td>1</td>
+              <td>
+                <img src="http://localhost:5000/{{ item.product.item_img }}" alt="" style="width:60px;height:60px;">
+              </td>
+              <td>{{ item.product.item_name.slice(0,15) }}..</td>
+              <td>{{ item.totalPrice }}</td>
+              <td class="h6">{{ item.qty }}</td>
+              <td class="h6">{{ item.address.name.slice(0,7) }}..,{{
+                item.address.locality }},{{ item.address.landmark }},{{ item.address.city }},{{ item.address.pincode
+                }}</td>
+
+              <td *ngIf="item.Activeorder">
+                <p *ngIf="item.paymentStatus" class=" text-success h6">Sucess</p>
+                <p *ngIf="!item.paymentStatus" class="h6 text-primary">Cash on Delivery</p>
+              </td>
+              <td *ngIf="!item.Activeorder">
+                <p>cancel</p>
+              </td>
+              <td>
+                {{ item.razorpay_payment_id}}
+              </td>
+              <td>
+                <button class="btn btn-success"*ngIf="item.pdf" >True</button>
+                <button class="btn btn-info" *ngIf="!item.pdf" (click)="pdf(item._id)">pdf</button>
+              </td>
+
+              <td class="d-flex" *ngIf="item.Activeorder">
+                <button class="btn btn-outline-primary mx-2 mt-2" (click)="delivery(item._id)" *ngIf="!item.isdelivered">Precessing</button>
+                <button class="btn btn-success mx-2" *ngIf="item.isdelivered">Delivered</button>
+              </td>
+              <td *ngIf="!item.Activeorder">
+                <button class="btn btn-info mx-2" (click)="refund(item._id)" *ngIf="item.paymentStatus">Refund</button>
+                <button class="btn btn-danger mx-2" (click)="refund(item._id)" *ngIf="!item.paymentStatus">cancel</button>
+              </td>
+            </tr>
+
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</main>
+
+

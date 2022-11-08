@@ -1,0 +1,21 @@
+<div class="head mt-5">
+
+  <div class=" d-inline-block mx-lg-3 mx-1 mt-3 card-head mt-4 " *ngFor="let item of product | filter:params">
+    <div class="card ">
+      <a routerLink="/detail/{{ item._id }}" class="text-decoration-none">
+        <div class="zoom">
+          <img src="http://localhost:5000/{{ item.item_img }}" class="card-img-top cart-img zoom-img" alt="...">
+        </div>
+        <div class="card-body">
+          <h5 class="card-title ">{{ item.item_name.slice(0,12)}}...</h5>
+          <p class="card-text text-success h6">{{ item.price | currency:'INR':true }}</p>
+          <p class="card-text h6">{{ item.category.category_name }}</p>
+        </div>
+      </a>
+    </div>
+    <div *ngIf="!item.item_name">
+      <p>not product</p>
+    </div>
+  </div>
+</div>
+

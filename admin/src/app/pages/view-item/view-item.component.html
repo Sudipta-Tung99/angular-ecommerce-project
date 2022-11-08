@@ -1,0 +1,29 @@
+<div class="d-md-flex justify-content-around mt-2">
+  <div class="detail-img">
+    <img src="http://localhost:5000/{{ item.item_img }}" alt=""
+      class="w-100 h-100">
+    <div class="card-footer d-none d-md-flex justify-content-around mt-3 ">
+      <button type="button" class="btn btn-warning w-50 mx-1" routerLink="/item">Go to item</button>
+
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">{{ item.item_name }}</h5>
+      <h6 class="card-subtitle mb-2 text-muted text-success">{{ item.price|currency:"INR" }}</h6>
+      <h6 class="card-subtitle mb-2 text-muted">{{ item.category.category_name }}</h6>
+      <h6 class="card-subtitle mb-2 text-muted">stock: {{ item.stock }}</h6>
+      <p class="card-text">{{ item.description }}</p>
+
+    </div>
+
+
+  </div>
+</div>
+
+  <div class="card-footer d-flex d-md-none justify-content-around mt-3 fixed-bottom bg-white p-2">
+    <button type="button" class="btn btn-warning w-50 mx-2" routerLink="/item">Go to item</button>
+
+</div>
+

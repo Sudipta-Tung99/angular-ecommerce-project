@@ -1,0 +1,45 @@
+<main>
+  <div class="container-fluid px-4">
+      <h1 class="mt-4">USer</h1>
+      <div class="card mb-4">
+        <div class="card-body" style="overflow-x:auto;">
+            <form  style="margin: 0 auto ;">
+              <div class="input-group">
+                  <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..."  aria-describedby="btnNavbarSearch" />
+                  <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+              </div>
+          </form>
+            <hr>
+              <table >
+                  <thead>
+                      <tr>
+                          <th>No.</th>
+                          <th>Name</th>
+                          <th>Email</th>
+                          <th>verified</th>
+
+                      </tr>
+
+                  </thead>
+                  <tbody>
+
+                      <tr *ngFor="let item of data;let i=index" >
+                          <td>{{ i+1 }}</td>
+
+                          <td>{{ item.name }}</td>
+                          <td>{{ item.email }}</td>
+                          <td *ngIf="item.verify" class=" text-success h6">True</td>
+                          <td *ngIf="!item.verify" class=" text-danger">False</td>
+                          <!-- <td class="d-flex"> -->
+                            <!-- <button class="btn btn-outline-primary mx-2" routerLink="/viewItem/{{ item._id }}"><i class="fas fa-eye"></i></button>
+                            <button class="btn btn-outline-success mx-2"routerLink="/updateitem/{{ item._id }}"><i class="fas fa-edit"></i></button>
+                            <button class="btn btn-outline-danger mx-2" (click)="deleteItem(item._id)" ><i class="fas fa-trash"></i></button> -->
+                          <!-- </td> -->
+                      </tr>
+
+                  </tbody>
+              </table>
+          </div>
+      </div>
+  </div>
+</main>

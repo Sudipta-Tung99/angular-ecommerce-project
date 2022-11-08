@@ -1,0 +1,71 @@
+
+<style>
+  input.ng-touched.ng-invalid {
+      background-color:red;
+  }
+</style>
+
+<div class=" mx-lg-5 mx-2 mt-5 " *ngIf="!verifyOtp">
+  <div class="d-flex">
+    <div class="  w-50 d-lg-block d-none">
+      <img src="assets/img/undraw_secure_login_pdn4.png" alt="" class="w-100">
+    </div>
+    <div class=" w-75 mt-lg-5 mt-1" style="margin: 0 auto ;">
+      <form #user="ngForm" (ngSubmit)="onsubmit(user.value)">
+        <div class="mb-3">
+          <!-- {{ counter }} -->
+          <label for="validationCustom01" class="form-label">Name</label>
+          <input type="text" class="form-control"  id="validationCustom01" aria-describedby="nameHelp" name="name"
+            ngModel>
+            <div *ngIf="errorData.name">
+          <span *ngIf="errorData.name" class=" text-danger">{{ errorData.name }}</span>
+          <!-- <span *ngIf="!errorData.name" class=" text-danger valid-feedback">{{ errorData.name }}</span> -->
+        </div>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Email address</label>
+          <input type="email" class="form-control"  id="exampleInputEmail1" aria-describedby="emailHelp" name="email"
+            ngModel>
+            <!-- <input type="email" class="form-control is-invalid" *ngIf="errorData.email"   id="exampleInputEmail1" aria-describedby="emailHelp" name="email"
+            ngModel> -->
+        </div>
+        <span class=" text-danger">{{ errorData.email }}</span>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input type="password" class="form-control " id="exampleInputPassword1" name="password" ngModel>
+          <span class=" text-danger">{{ errorData.password }}</span>
+        </div>
+        <button type="submit" class="btn btn-primary" *ngIf="!message">Register</button>
+      </form>
+      <form #otp="ngForm" (ngSubmit)="otpSubmit(otp.value)" *ngIf="message">
+        <div class="mb-3 ">
+          <label for="exampleInputPassword1" class="form-label">OTP</label>
+          <input type="text" class="form-control" id="exampleInputPassword1" name="otp" ngModel>
+        </div>
+        <button type="submit" class="btn btn-primary">verify Account</button>
+      </form>
+      <br>
+      <!-- <div class="w-100 ">
+        <a href="#" class="btn btn-outline-success google-plus w-100"> Login with Google <i
+            class="fa fa-google-plus"></i> </a>
+      </div> -->
+      <br>
+      <div class=" alert alert-success" *ngIf="message">
+        {{ message }}
+      </div>
+      <div class="alert alert-danger" *ngIf="error">
+        {{ error }}
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+<div class="border text-center" *ngIf="verifyOtp">
+  <p>Email verify Sucessfull</p>
+  <img
+    src="data:image/png;base64,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"
+    alt="" class="w-100 h-100">
+  <button class="btn btn-primary mb-3" (click)="click()">ok</button>
+</div>
